@@ -1,5 +1,5 @@
 @blue: #2B448C;
-
+@indigo: #303f9f;
 @accent-red: #ff8a80;
 @accent-green: #69f0ae;
 
@@ -15,7 +15,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: @blue;
+    background: @indigo;
     color: white;
 }
 
@@ -35,7 +35,12 @@ md-input-container {
     width: 150px;
 }
 
-
+th {
+    border-bottom: 1px solid yellow;
+}
+tr:nth-child(2) > td {
+    padding-top: 20px;
+}
 th, td {
     padding: 10px;
     padding-left: 3px;

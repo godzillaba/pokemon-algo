@@ -8,7 +8,7 @@ app.filter('capitalize', function() {
 
 app.filter('effectiveness', function() {
     return function(input) {
-        var effs = ['None', 'Not Very', '-', 'Super'];
+        var effs = ['None', 'Slight', '-', 'Super'];
         return effs[parseInt(input)];
     }
 })
@@ -67,5 +67,8 @@ app.controller('pokemonAlgoController', ["$scope", "$http", function($scope, $ht
 }]);
 
 app.config(function($mdThemingProvider) {
-    $mdThemingProvider.theme('default').dark();
+    $mdThemingProvider.theme('default')
+        .primaryPalette('indigo')
+        .accentPalette('yellow')
+        .dark();
 });
