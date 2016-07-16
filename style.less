@@ -3,80 +3,96 @@
 @accent-red: #ff8a80;
 @accent-green: #69f0ae;
 @yellow: rgb(255, 235, 59);
-
-@table-color-alternate: inherit;
-
+@font-black: rgba(33,33,33,0.87);
 @header-height: 120px;
-@code-icon-size: 40px;
-
-
+@card-padding: 15px;
 header {
-    width: 100%;
-    height: @header-height;
+    padding: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: @indigo;
     color: white;
+    h1 {
+        margin: 0;
+    }
 }
 
 #code-icon {
     position: absolute;
     top: 0;
     right: 5px;
+    i {
+        font-size: 40px;
+    }
 }
-#code-icon > i {
-    font-size: @code-icon-size;
+#inputs {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: @card-padding;
+
+    md-radio-button:last-child {
+        margin: 0;
+    }
+    md-input-container {
+        margin: 0 0 0 40px;
+        width: 150px;
+    }
 }
-table {
+#poketable {
+    @td-padding: 10px;
+    @span-padding: 7px;
+
     border-spacing: 0;
+    th {
+        border-bottom: 1px solid @yellow;
+    }
+    tr:nth-child(2) > td {
+        padding-top: 20px;
+    }
+    td,
+    th {
+        padding: @td-padding;
+        padding-left: @td-padding - @span-padding;
+    }
+    td > span {
+        padding: @span-padding;
+        padding-left: 0;
+        border-radius: 2px;
+    }
+    tr > td:first-child,
+    tr > th:first-child {
+        padding-left: @card-padding;
+    }
+    tr.last-of-score > td {
+        border-bottom: 1px solid rgba(255, 235, 59, .3);
+    }
+    span.super-effective {
+        background: @accent-green;
+        color: @font-black;
+        .effectiveness-span;
+    }
+    span.not-very-effective {
+        background: @accent-red;
+        .effectiveness-span;
+    }
+    span.no-effect {
+        background: black;
+        color: white;
+        .effectiveness-span;
+    }
+    .effectiveness-span {
+        padding-left: @span-padding;
+    }
 }
-md-input-container {
-    margin: 0 0 0 40px;
-    width: 150px;
-}
-
-th {
-    border-bottom: 1px solid @yellow;
-}
-tr:nth-child(2) > td {
-    padding-top: 20px;
-}
-th, td {
-    padding: 10px;
-    padding-left: 3px;
-}
-td > span {
-    padding: 7px;
-    border-radius: 2px;
-}
-
-tr.last-of-score > td {
-    border-bottom: 1px solid rgba(255, 235, 59, .3)
-}
-
-span.super-effective {
-    background: @accent-green;
-}
-span.not-very-effective {
-    background: @accent-red;
-}
-span.no-effect {
-    background: black;
-    color: white;
-}
-
-tr:nth-child(even) {
-    background: @table-color-alternate;
-}
+/* BOOTSTRAP CONTAINER STYLE */
 .bs-container {
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
 }
-
-
 @media (min-width: 768px) {
     .bs-container {
         width: 750px;

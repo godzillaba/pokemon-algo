@@ -30,20 +30,20 @@
         <a id="code-icon" href="https://github.com/c0depizza"><i class="material-icons">code</i></a>
     </header>
     <div style="margin-top: 50px;" class="bs-container">
-        <div layout="row" id="inputs">
-            <md-radio-group ng-change="updateRanks()" ng-model="whichGiven">
-                <md-radio-button ng-repeat="d in ['friendly','enemy']" ng-value="d" aria-label="{{ d }}">
-                    {{ d | capitalize }}
-                </md-radio-button>
-            </md-radio-group>
-            <md-input-container>
-                <md-select ng-change="updateRanks()" ng-model="selectedType" placeholder="normal">
-                    <md-option ng-value="type" ng-repeat="type in types">{{ type | capitalize }}</md-option>
-                </md-select>
-            </md-input-container>
-        </div>
+        <md-card id="inputs">
+                <md-radio-group ng-change="updateRanks()" ng-model="whichGiven">
+                    <md-radio-button ng-repeat="d in ['enemy','friendly']" ng-value="d" aria-label="{{ d }}">
+                        {{ d | capitalize }}
+                    </md-radio-button>
+                </md-radio-group>
+                <md-input-container>
+                    <md-select ng-change="updateRanks()" ng-model="selectedType" placeholder="normal">
+                        <md-option ng-value="type" ng-repeat="type in types">{{ type | capitalize }}</md-option>
+                    </md-select>
+                </md-input-container>
+        </md-card>
         <md-card>
-            <table class="table" style="width: 100%; text-align:left;">
+            <table id="poketable" class="table" style="width: 100%; text-align:left;">
                 <tr>
                     <th>
                         <span>Friendly Type</span>
