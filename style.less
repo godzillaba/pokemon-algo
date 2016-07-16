@@ -2,6 +2,7 @@
 @indigo: #303f9f;
 @accent-red: #ff8a80;
 @accent-green: #69f0ae;
+@yellow: rgb(255, 235, 59);
 
 @table-color-alternate: inherit;
 
@@ -36,7 +37,7 @@ md-input-container {
 }
 
 th {
-    border-bottom: 1px solid yellow;
+    border-bottom: 1px solid @yellow;
 }
 tr:nth-child(2) > td {
     padding-top: 20px;
@@ -48,6 +49,10 @@ th, td {
 td > span {
     padding: 7px;
     border-radius: 2px;
+}
+
+tr.last-of-score > td {
+    border-bottom: 1px solid rgba(255, 235, 59, .3)
 }
 
 span.super-effective {

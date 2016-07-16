@@ -4,7 +4,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pokemon Matchup Algo</title>
+    <title>PokeMatchup Algo</title>
     <!-- Angular Material style sheet -->
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
     <link rel="stylesheet/less" href="./style.less" />
@@ -61,7 +61,7 @@
                         <span>Score</span>
                     </th>
                 </tr>
-                <tr ng-repeat="rel in ranked">
+                <tr ng-repeat="rel in ranked" ng-class="{'last-of-score': (ranked[$index+1].score - rel.score != 0)}">
                     <td>
                         <span>{{rel.friendly | capitalize}}</span>
                     </td>
