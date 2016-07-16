@@ -11,6 +11,14 @@ app.filter('effectiveness', function() {
         var effs = ['None', 'Slight', '-', 'Super'];
         return effs[parseInt(input)];
     }
+});
+
+app.filter('infinitize', function() {
+    return function(input) {
+        if (input == Infinity) return "\u221e";
+        else if (input == -Infinity) return "-\u221e";
+        else return input
+    }
 })
 
 app.controller('pokemonAlgoController', ["$scope", "$http", function($scope, $http) {
@@ -32,6 +40,11 @@ app.controller('pokemonAlgoController', ["$scope", "$http", function($scope, $ht
                 this.friendlyAttack = $scope.relationships[friendly][enemy];
                 this.enemyAttack = $scope.relationships[enemy][friendly];
                 this.score = this.friendlyAttack - this.enemyAttack;
+                if (this.enemyAttack === 0 && this.friendlyAttack > 0) {
+                    this.score = Infinity;
+                } else if (this.enemyAttack > 0 && this.friendlyAttack === 0) {
+                    this.score = -Infinity
+                }
             }
         }
         scoreRelationship = function(friendly, enemy) {

@@ -46,22 +46,22 @@
             <table id="poketable" class="table" style="width: 100%; text-align:left;">
                 <tr>
                     <th>
-                        <span>Friendly Type</span>
+                        <span>F-Type</span>
                     </th>
                     <th>
-                        <span>Enemy Type</span>
+                        <span>E-Type</span>
                     </th>
                     <th>
-                        <span>Friendly Attack</span>
+                        <span>F-Attack</span>
                     </th>
                     <th>
-                        <span>Enemy Attack</span>
+                        <span>E-Attack</span>
                     </th>
                     <th>
                         <span>Score</span>
                     </th>
                 </tr>
-                <tr ng-repeat="rel in ranked" ng-class="{'last-of-score': (ranked[$index+1].score - rel.score != 0)}">
+                <tr ng-repeat="rel in ranked" ng-class="{'last-of-score': (ranked[$index+1].score != rel.score)}">
                     <td>
                         <span>{{rel.friendly | capitalize}}</span>
                     </td>
@@ -79,7 +79,7 @@
                         </span>
                     </td>
                     <td>
-                        <span>{{rel.score}}</span>
+                        <span>{{rel.score | infinitize}}</span>
                     </td>
                 </tr>
             </table>
