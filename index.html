@@ -8,6 +8,8 @@
     <!-- Angular Material style sheet -->
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
     <link rel="stylesheet/less" href="./style.less" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 
     <script>
         less = {
@@ -25,6 +27,7 @@
   -->
     <header>
         <h1>Pokemon Type Calculator</h1>
+        <a id="code-icon" href="https://github.com/c0depizza"><i class="material-icons">code</i></a>
     </header>
     <div style="margin-top: 50px;" class="bs-container">
         <div layout="row" id="inputs">
@@ -39,7 +42,7 @@
                 </md-select>
             </md-input-container>
         </div>
-        <div>
+        <md-card>
             <table class="table" style="width: 100%; text-align:left;">
                 <tr>
                     <th>
@@ -80,7 +83,7 @@
                     </td>
                 </tr>
             </table>
-        </div>
+        </md-card>
     </div>
 
     <!-- Angular Material requires Angular.js Libraries -->

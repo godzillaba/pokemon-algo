@@ -2,7 +2,7 @@ var app = angular.module('pokemonAlgoApp', ['ngMaterial']);
 
 app.filter('capitalize', function() {
     return function(input) {
-      return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+        return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
     }
 });
 
@@ -65,3 +65,7 @@ app.controller('pokemonAlgoController', ["$scope", "$http", function($scope, $ht
 
 
 }]);
+
+app.config(function($mdThemingProvider) {
+    $mdThemingProvider.theme('default').dark();
+});
