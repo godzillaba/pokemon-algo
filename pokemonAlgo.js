@@ -8,7 +8,7 @@ app.filter('capitalize', function() {
 
 app.filter('effectiveness', function() {
     return function(input) {
-        var effs = ['None', 'Not Very', '', 'Super'];
+        var effs = ['None', 'Not Very', '-', 'Super'];
         return effs[parseInt(input)];
     }
 })
@@ -17,6 +17,8 @@ app.controller('pokemonAlgoController', ["$scope", "$http", function($scope, $ht
     $scope.ranked = [];
     $scope.whichGiven = "enemy";
     $scope.selectedType = "normal";
+
+    $scope.effectivenessClasses = ['no-effect', 'not-very-effective', '', 'super-effective']
 
     $http.get(window.location.toString() + "pokeData.json").then(function(data) {
         console.log(data);
@@ -54,10 +56,10 @@ app.controller('pokemonAlgoController', ["$scope", "$http", function($scope, $ht
             $scope.ranked = $scope.rank($scope.selectedType);
         }
 
-
         $scope.updateRanks = updateRanks;
         $scope.scoreRelationship = scoreRelationship;
         $scope.rank = rank;
+        updateRanks();
 
     });
 

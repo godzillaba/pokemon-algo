@@ -7,7 +7,16 @@
     <title>Pokemon Matchup Algo</title>
     <!-- Angular Material style sheet -->
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet/less" href="./style.less" />
+
+    <script>
+        less = {
+            env: "development"
+        };
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.min.js"></script>
+
 </head>
 
 <body ng-controller="pokemonAlgoController" ng-cloak>
@@ -15,9 +24,9 @@
     Your HTML content here
   -->
     <header>
-        <h1>Mon</h1>
+        <h1>Pokemon Type Calculator</h1>
     </header>
-    <div class="container">
+    <div style="margin-top: 50px;" class="bs-container">
         <div layout="row" id="inputs">
             <md-radio-group ng-change="updateRanks()" ng-model="whichGiven">
                 <md-radio-button ng-repeat="d in ['friendly','enemy']" ng-value="d" aria-label="{{ d }}">
@@ -34,36 +43,40 @@
             <table class="table" style="width: 100%; text-align:left;">
                 <tr>
                     <th>
-                        Friendly Type
+                        <span>Friendly Type</span>
                     </th>
                     <th>
-                        Enemy Type
+                        <span>Enemy Type</span>
                     </th>
                     <th>
-                        Friendly Attack
+                        <span>Friendly Attack</span>
                     </th>
                     <th>
-                        Enemy Attack
+                        <span>Enemy Attack</span>
                     </th>
                     <th>
-                        Score
+                        <span>Score</span>
                     </th>
                 </tr>
                 <tr ng-repeat="rel in ranked">
                     <td>
-                        {{rel.friendly | capitalize}}
+                        <span>{{rel.friendly | capitalize}}</span>
                     </td>
                     <td>
-                        {{rel.enemy | capitalize}}
+                        <span>{{rel.enemy | capitalize}}</span>
                     </td>
                     <td>
-                        {{rel.friendlyAttack | effectiveness}}
+                        <span ng-class="effectivenessClasses[rel.friendlyAttack]">
+                            {{rel.friendlyAttack | effectiveness}}
+                        </span>
                     </td>
                     <td>
-                        {{rel.enemyAttack | effectiveness}}
+                        <span ng-class="effectivenessClasses[rel.enemyAttack]">
+                            {{rel.enemyAttack | effectiveness}}
+                        </span>
                     </td>
                     <td>
-                        {{rel.score}}
+                        <span>{{rel.score}}</span>
                     </td>
                 </tr>
             </table>
@@ -80,6 +93,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <!-- Your application bootstrap  -->
+
     <script type="text/javascript" src="./pokemonAlgo.js"></script>
 
 </body>

@@ -1,0 +1,72 @@
+@blue: #2B448C;
+
+@accent-red: #ff8a80;
+@accent-green: #69f0ae;
+
+@table-color-alternate: #eee;
+
+
+header {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: @blue;
+    color: white;
+}
+table {
+    border-spacing: 0;
+}
+md-input-container {
+    margin: 0 0 0 40px;
+    width: 150px;
+}
+
+
+th, td {
+    padding: 10px;
+    padding-left: 3px;
+}
+td > span {
+    padding: 7px;
+    border-radius: 2px;
+}
+
+span.super-effective {
+    background: @accent-green;
+}
+span.not-very-effective {
+    background: @accent-red;
+}
+span.no-effect {
+    background: black;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: @table-color-alternate;
+}
+
+
+@media (min-width: 1200px) {
+    .bs-container {
+        width: 1170px;
+    }
+}
+@media (min-width: 992px) {
+    .bs-container {
+        width: 970px;
+    }
+}
+@media (min-width: 768px) {
+    .bs-container {
+        width: 750px;
+    }
+}
+.bs-container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
