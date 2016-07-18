@@ -21,10 +21,12 @@ app.filter('infinitize', function() {
     }
 })
 
-app.controller('pokemonAlgoController', ["$scope", "$http", function($scope, $http) {
+app.controller('pokemonAlgoController', ["$scope", "$http", "$mdDialog", function($scope, $http, $mdDialog) {
     $scope.ranked = [];
     $scope.whichGiven = "enemy";
     $scope.selectedType = "normal";
+
+    window.$scope = $scope;
 
     $scope.effectivenessClasses = ['no-effect', 'not-very-effective', '', 'super-effective']
 
@@ -68,6 +70,28 @@ app.controller('pokemonAlgoController', ["$scope", "$http", function($scope, $ht
         updateRanks = function() {
             $scope.ranked = $scope.rank($scope.selectedType);
         }
+
+        showInfoDialog = function() {
+            info = $mdDialog.alert({
+                template: `
+                <md-dialog layout-padding aria-label="List dialog">
+                    <h2>What Is This?</h2>
+                    <p>This application can tell trainers which types of pokemon will be most effective in certain circumstances!
+                        <br/><br/>
+                        1. Select 'Friendly' or 'Enemy' to pick what will remain constant
+                        <br/>2. Select a type from the dropdown menu
+                        <br/>3. Win!
+                    </p>
+                    <md-dialog-actions>
+                        <md-button ng-click="dialog.hide()" class="md-primary">Close</md-button>
+                    </md-dialog-actions>
+                </md-dialog>
+                `
+            }).clickOutsideToClose(true);
+            $mdDialog.show(info);
+        }
+
+        $scope.showInfoDialog = showInfoDialog;
 
         $scope.updateRanks = updateRanks;
         $scope.scoreRelationship = scoreRelationship;
