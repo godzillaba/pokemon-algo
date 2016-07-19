@@ -21,10 +21,13 @@ app.filter('infinitize', function() {
     }
 })
 
-app.controller('pokemonAlgoController', ["$scope", "$http", "$mdDialog", function($scope, $http, $mdDialog) {
+app.controller('pokemonAlgoController', ["$scope", "$http", "$mdDialog", "$window",
+function($scope, $http, $mdDialog, $window) {
     $scope.ranked = [];
     $scope.whichGiven = "enemy";
     $scope.selectedType = "normal";
+
+    $scope.$window = $window;
 
     window.$scope = $scope;
 
@@ -49,11 +52,8 @@ app.controller('pokemonAlgoController', ["$scope", "$http", "$mdDialog", functio
                 }
             }
         }
-        scoreRelationship = function(friendly, enemy) {
-            return $scope.relationships[friendly][enemy] - $scope.relationships[enemy][friendly];
-        }
 
-        rank = function(fe) {
+        var rank = function(fe) {
             var unsorted = [];
             for (var i = 0; i < $scope.types.length; i++) {
                 if ($scope.whichGiven == 'friendly') {
@@ -67,11 +67,11 @@ app.controller('pokemonAlgoController', ["$scope", "$http", "$mdDialog", functio
             });
         }
 
-        updateRanks = function() {
+        var updateRanks = function() {
             $scope.ranked = $scope.rank($scope.selectedType);
         }
 
-        showInfoDialog = function() {
+        var showInfoDialog = function() {
             info = $mdDialog.alert({
                 template: `
                 <md-dialog layout-padding aria-label="List dialog">
@@ -91,10 +91,12 @@ app.controller('pokemonAlgoController', ["$scope", "$http", "$mdDialog", functio
             $mdDialog.show(info);
         }
 
-        $scope.showInfoDialog = showInfoDialog;
+        angular.element($window).bind('resize', function(){
+            $scope.$apply();
+        })
 
+        $scope.showInfoDialog = showInfoDialog;
         $scope.updateRanks = updateRanks;
-        $scope.scoreRelationship = scoreRelationship;
         $scope.rank = rank;
         updateRanks();
 

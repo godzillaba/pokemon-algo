@@ -48,10 +48,10 @@
         <md-card>
             <table id="poketable" class="table" style="width: 100%; text-align:left;">
                 <tr>
-                    <th>
+                    <th ng-if="!(whichGiven === 'friendly' && $window.innerWidth < 475)">
                         <span>F-Type</span>
                     </th>
-                    <th>
+                    <th ng-if="!(whichGiven === 'enemy' && $window.innerWidth < 475)">
                         <span>E-Type</span>
                     </th>
                     <th>
@@ -65,10 +65,10 @@
                     </th>
                 </tr>
                 <tr ng-repeat="rel in ranked" ng-class="{'last-of-score': (ranked[$index+1].score != rel.score)}">
-                    <td>
+                    <td ng-if="!(whichGiven === 'friendly' && $window.innerWidth < 475)">
                         <span>{{rel.friendly | capitalize}}</span>
                     </td>
-                    <td>
+                    <td ng-if="!(whichGiven === 'enemy' && $window.innerWidth < 475)">
                         <span>{{rel.enemy | capitalize}}</span>
                     </td>
                     <td>
